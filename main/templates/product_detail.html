@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+<!--{% load specifications %}-->
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="url 'base'">Home</a></li>
+            <li class="breadcrumb-item"><a href="product.category.name">Library</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+    </nav>
+    <div class="row" >
+        <div class="col-md-2" >
+            <img src="{{product.image.url}}" class="img-fluid" style="width: 150px" >
+        </div>
+        <div class="col-md-10">
+            <h3>{{product.title}}</h3>
+            <p>Цена: {{product.price}}</p>
+            <p>Описание: {{product.description}}</p>
+        </div>
+        <p class="mt-4">Характеристики:</p>
+
+<!--        {{product|product_spec}}-->
+
+        {% if product.category.slug == 'smartphone' %}
+            {% include 'smartphone_speciication.html' %}
+        {% else %}
+            {% include 'notebook_specification.html' %}
+        {% endif %}
+
+
+    </div>
+{% endblock %}
